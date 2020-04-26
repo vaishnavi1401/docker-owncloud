@@ -1,0 +1,26 @@
+version: '3'
+services:
+     Owncloud:
+         image: owncloud
+         ports: 
+           - 8080:80
+         restart: always
+         volumes:
+           - my_owncloud_data:/var/www/html
+
+
+     mysql:
+         image: mysql:5.7
+         volumes:
+           - mysql_data:/var/www/html
+         restart: always
+         environment:
+           MYSQL_ROOT_PASSWORD: rootpass
+           MYSQL_USER: vaishnavi
+           MYSQL_PASSWORD: redhat
+           MYSQL_DATABASE: owncloud
+
+
+volumes:
+      my_owncloud_data:
+      mysql_data:
